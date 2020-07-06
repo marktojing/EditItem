@@ -63,6 +63,12 @@ public class EditItem extends RelativeLayout {
         editText.setHint("请输入信息");
         textView.setText("标题");
     }
+    public View getLeftText(){
+        return textView;
+    }
+    public View getRightView(){
+        return editBox;
+    }
     public String getTitle(){
         return textView.getText().toString().trim();
     }

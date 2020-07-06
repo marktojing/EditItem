@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="16dp"
     android:layout_gravity="center_vertical"
-    android:layout_marginVertical="8dp"
     android:background="@drawable/background_layout_all_white"
     >
     <TextView
