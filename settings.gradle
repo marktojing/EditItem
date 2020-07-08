@@ -1,3 +1,2 @@
 rootProject.name='EditItem'
-include ':app'
-include ':edititemlib'
+include ':app','edititemlib'

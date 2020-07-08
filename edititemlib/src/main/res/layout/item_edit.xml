@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="16dp"
     android:layout_gravity="center_vertical"
-    android:background="@drawable/background_layout_all_white"
-    >
+    android:layout_marginHorizontal="16dp"
+    android:orientation="horizontal">
+
     <TextView
         android:id="@+id/text"
         android:layout_width="80dp"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@android:color/white"
         android:background="@drawable/background_text_blue"
+        android:gravity="center"
         android:text="31"
-        />
+        android:textColor="@android:color/white" />
+
     <com.csnt.ui_editbox.EditBox
         android:id="@+id/edit_box"
-        android:layout_weight="1"
         android:layout_width="0dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:background="@android:color/white"
-        android:layout_height="match_parent"/>
+        android:paddingHorizontal="8dp" />
 
 </LinearLayout>

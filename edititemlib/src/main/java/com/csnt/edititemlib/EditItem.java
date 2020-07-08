@@ -2,6 +2,8 @@ package com.csnt.edititemlib;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -27,6 +29,12 @@ public class EditItem extends RelativeLayout {
     private TextView textView;
     private EditBox editBox;
     private EditText editText;
+    private int leftBackgroundColor= Color.GRAY;
+    private int rightBackgroundColor=Color.WHITE;
+    private float LTCORNER=0;
+    private float RTCORNER=0;
+    private float RBCORNER=0;
+    private float LBCORNER=0;
     public EditItem(Context context) {
         this(context,null);
     }
@@ -69,6 +77,60 @@ public class EditItem extends RelativeLayout {
     public View getRightView(){
         return editBox;
     }
+    public void setCornerRadius(float radius){
+        this.LBCORNER=radius;
+        this.RBCORNER=radius;
+        this.LTCORNER=radius;
+        this.RTCORNER=radius;
+        setLeftBackground();
+        setRightBackground();
+    }
+    public void setCornerTopRadius(float radius){
+        this.LTCORNER=radius;
+        this.RTCORNER=radius;
+        setLeftBackground();
+        setRightBackground();
+    }
+    public void setCornerBottomRadius(float radius){
+        this.LBCORNER=radius;
+        this.RBCORNER=radius;
+        setLeftBackground();
+        setRightBackground();
+    }
+    public void setLeftBackGroundColor(@ColorInt int color){
+        this.leftBackgroundColor=color;
+        setLeftBackground();
+    }
+    public void setRightBackGroundColor(@ColorInt int color){
+        this.rightBackgroundColor=color;
+        setRightBackground();
+    }
+    private void setLeftBackground(){
+        GradientDrawable gd = new GradientDrawable();//创建drawable
+        gd.setCornerRadii(new float[]{
+                dip2px(LTCORNER),dip2px(LTCORNER),
+                dip2px(0),dip2px(0),
+                dip2px(0),dip2px(0),
+                dip2px(LBCORNER),dip2px(LBCORNER),
+        });
+        gd.setColor(leftBackgroundColor);
+        textView.setBackground(gd);
+    }
+    private void setRightBackground(){
+        GradientDrawable gd = new GradientDrawable();//创建drawable
+        gd.setCornerRadii(new float[]{
+                dip2px(0),dip2px(0),
+                dip2px(RTCORNER),dip2px(RTCORNER),
+                dip2px(RBCORNER),dip2px(RBCORNER),
+                dip2px(0),dip2px(0),
+        });
+        gd.setColor(rightBackgroundColor);
+        EditText editText = editBox.getEditText();
+        editText.setBackgroundColor(rightBackgroundColor);
+        editBox.setBackground(gd);
+    }
+
+
     public String getTitle(){
         return textView.getText().toString().trim();
     }
@@ -115,5 +177,9 @@ public class EditItem extends RelativeLayout {
     public void setTitleSize(float size){
         textView.setTextSize(size);
     }
-
+    private  int dip2px(float dpValue) {
+        final float scale = mContext.getResources()
+                .getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
 }
